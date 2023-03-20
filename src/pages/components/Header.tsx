@@ -2,7 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Image from "next/image";
-import type { UserDetailsProps } from "../types";
+import type { UserDetailsProps } from "../../types";
 
 const LogoutButton: React.FC = () => (
   <Button
@@ -42,7 +42,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   );
 };
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const { data: sessionData } = useSession();
   const [showLogout, setShowLogout] = useState<boolean>(false);
   const toggleShowLogout = () => setShowLogout((x) => !x);
@@ -61,3 +61,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;
