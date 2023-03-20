@@ -2,12 +2,17 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Image from "next/image";
-import type { UserDetailsProps } from "../../types";
+import type {
+  LoginButtonProps,
+  LogoutButtonProps,
+  UserDetailsProps,
+} from "../../types";
 
-const LogoutButton: React.FC = () => (
+const LogoutButton: React.FC<LogoutButtonProps> = ({ isLoading }) => (
   <Button
     colorScheme="blue"
     variant="outline"
+    isLoading={isLoading}
     onClick={() => void signOut()}
     className="!absolute top-24 right-1"
   >
@@ -15,16 +20,18 @@ const LogoutButton: React.FC = () => (
   </Button>
 );
 
-const LoginButton: React.FC = () => (
-  <Button colorScheme="blue" variant="solid" onClick={() => void signIn()}>
+const LoginButton: React.FC<LoginButtonProps> = ({ isLoading }) => (
+  <Button
+    isLoading={isLoading}
+    colorScheme="blue"
+    variant="solid"
+    onClick={() => void signIn()}
+  >
     Sign in
   </Button>
 );
 
-const UserDetails: React.FC<UserDetailsProps> = ({
-  sessionData,
-  onClick,
-}: UserDetailsProps) => {
+const UserDetails: React.FC<UserDetailsProps> = ({ sessionData, onClick }) => {
   return (
     <div
       className=" flex cursor-pointer flex-col items-center justify-center gap-1"
@@ -43,7 +50,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
 };
 
 const Header: React.FC = () => {
-  const { data: sessionData } = useSession();
+  const { data: sessionData, status } = useSession();
   const [showLogout, setShowLogout] = useState<boolean>(false);
   const toggleShowLogout = () => setShowLogout((x) => !x);
 
@@ -54,9 +61,9 @@ const Header: React.FC = () => {
         {sessionData ? (
           <UserDetails sessionData={sessionData} onClick={toggleShowLogout} />
         ) : (
-          <LoginButton />
+          <LoginButton isLoading={status === "loading"} />
         )}
-        {showLogout && <LogoutButton />}
+        {showLogout && <LogoutButton isLoading={status === "loading"} />}
       </div>
     </header>
   );
