@@ -2,7 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Image from "next/image";
-import { UserDetailsProps } from "../types";
+import type { UserDetailsProps } from "../types";
 
 const LogoutButton: React.FC = () => (
   <Button
@@ -32,7 +32,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
     >
       <Image
         src={sessionData.user?.image as string}
-        alt={`Image of ${sessionData.user.name}`}
+        alt={`Image of ${sessionData.user.name as string}`}
         className="mx-2 inline overflow-hidden rounded-full"
         height={40}
         width={40}
