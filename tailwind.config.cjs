@@ -4,7 +4,10 @@ const config = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["cupcake"],
+  },
 };
 
 module.exports = config;
