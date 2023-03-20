@@ -4,6 +4,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "@/utils/api";
+import { Header } from "./components/Header";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from Note Taker" });
@@ -18,15 +19,8 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
-            <AuthShowcase />
-          </div>
-        </div>
+      <main className="flex min-h-screen flex-col items-center justify-start p-5">
+        <Header />
       </main>
     </>
   );
