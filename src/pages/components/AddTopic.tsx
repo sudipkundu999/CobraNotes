@@ -3,7 +3,7 @@ import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { api } from "@/utils/api";
 
 interface AddTopicProps {
-  refetchTopics: Function;
+  refetchTopics: () => void;
 }
 
 export const AddTopic: React.FC<AddTopicProps> = ({ refetchTopics }) => {

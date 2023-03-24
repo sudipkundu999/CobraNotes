@@ -46,9 +46,10 @@ const Notes: React.FC<NotesProps> = ({
 
   useEffect(() => {
     if (noteTopicId === topicId) {
-      refetchNotes();
+      void refetchNotes();
       setNoteTopicId("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [noteTopicId]);
 
   return (

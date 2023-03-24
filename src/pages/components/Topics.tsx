@@ -15,7 +15,7 @@ type Topic = RouterOutputs["topic"]["getAll"][0];
 
 interface TopicsProps {
   topics: Topic[];
-  refetchTopics: Function;
+  refetchTopics: () => void;
   noteTopicId: string;
   setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
 }
