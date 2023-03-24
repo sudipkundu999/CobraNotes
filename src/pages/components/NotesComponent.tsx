@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { api } from "@/utils/api";
 import { useSession } from "next-auth/react";
 import { AddTopic } from "./AddTopic";
@@ -11,12 +11,17 @@ const NotesComponent = () => {
     undefined, // no input
     { enabled: sessionData?.user !== undefined }
   );
+  const [noteTopicId, setNoteTopicId] = useState("");
 
   return (
     <div className="mt-10 w-full px-1">
-      <Topics topics={topics as Topic[]} refetchTopics={refetchTopics} />
+      <Topics
+        topics={topics as Topic[]}
+        refetchTopics={refetchTopics}
+        noteTopicId={noteTopicId}
+      />
       <AddTopic refetchTopics={refetchTopics} />
-      <AddNote topics={topics as Topic[]} />
+      <AddNote topics={topics as Topic[]} setNoteTopicId={setNoteTopicId} />
     </div>
   );
 };

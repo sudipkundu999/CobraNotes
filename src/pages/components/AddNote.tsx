@@ -11,12 +11,18 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 
-export const AddNote: React.FC<{ topics: Topic[] }> = ({ topics }) => {
+interface AddNoteProps {
+  topics: Topic[];
+  setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const AddNote: React.FC<AddNoteProps> = ({ topics, setNoteTopicId }) => {
   const defaultFormState = { title: "", content: "", topicId: "" };
   const [form, setForm] = useState<DefaultAddNoteForm>(defaultFormState);
   const [error, setError] = useState("");
   const createNote = api.note.create.useMutation({
     onSuccess: () => {
+      setNoteTopicId(form.topicId);
       setForm(defaultFormState);
     },
     onError(error, variables, context) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import {
@@ -13,9 +13,10 @@ import {
 
 interface NotesProps {
   topicId: string;
+  noteTopicId: string;
 }
 
-const Notes: React.FC<NotesProps> = ({ topicId }) => {
+const Notes: React.FC<NotesProps> = ({ topicId, noteTopicId }) => {
   const { data: sessionData, status } = useSession();
   const { data: notes, refetch: refetchNotes } = api.note.getAll.useQuery(
     { topicId: topicId },
@@ -37,6 +38,12 @@ const Notes: React.FC<NotesProps> = ({ topicId }) => {
       Delete Note
     </Button>
   );
+
+  useEffect(() => {
+    if (noteTopicId === topicId) {
+      refetchNotes();
+    }
+  }, [noteTopicId]);
 
   return (
     <div className="mt-1 w-full px-1">
