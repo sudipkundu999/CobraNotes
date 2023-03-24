@@ -1,15 +1,11 @@
 import { type NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
-
-// import { api } from "@/utils/api";
 import Header from "./components/Header";
+import NotesComponent from "./components/NotesComponent";
 
 const Home: NextPage = () => {
-  // const hello = api.example.hello.useQuery({ text: "from Note Taker" });
-  // const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-  //   undefined, // no input
-  //   { enabled: sessionData?.user !== undefined }
-  // );
+  const { data: sessionData, status } = useSession();
   return (
     <>
       <Head>
@@ -22,6 +18,16 @@ const Home: NextPage = () => {
       </Head>
       <main className="m-auto flex min-h-screen max-w-3xl flex-col items-center justify-start p-5">
         <Header />
+        {sessionData ? (
+          <NotesComponent />
+        ) : (
+          <div
+            className="flex items-center justify-center"
+            style={{ minHeight: "80vh" }}
+          >
+            Please login to continue
+          </div>
+        )}
       </main>
     </>
   );

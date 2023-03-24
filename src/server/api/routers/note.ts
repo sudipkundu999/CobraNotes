@@ -32,4 +32,13 @@ export const noteRouter = createTRPCRouter({
         },
       });
     }),
+  deleteAll: protectedProcedure
+    .input(z.object({ topicId: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.note.deleteMany({
+        where: {
+          topicId: input.topicId,
+        },
+      });
+    }),
 });
