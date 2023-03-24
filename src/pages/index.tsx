@@ -18,7 +18,16 @@ const Home: NextPage = () => {
       </Head>
       <main className="m-auto flex min-h-screen max-w-3xl flex-col items-center justify-start p-5">
         <Header />
-        {sessionData ? <NotesComponent /> : <div>Please login to continue</div>}
+        {sessionData ? (
+          <NotesComponent />
+        ) : (
+          <div
+            className="flex items-center justify-center"
+            style={{ minHeight: "80vh" }}
+          >
+            Please login to continue
+          </div>
+        )}
       </main>
     </>
   );
