@@ -9,8 +9,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Notes from "./Notes";
-import { Topic } from "@prisma/client";
-import { api } from "@/utils/api";
+import { api, type RouterOutputs } from "@/utils/api";
+
+type Topic = RouterOutputs["topic"]["getAll"][0];
 
 interface TopicsProps {
   topics: Topic[];

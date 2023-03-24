@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { api } from "@/utils/api";
+import { api, type RouterOutputs } from "@/utils/api";
 import { useSession } from "next-auth/react";
 import { AddTopic } from "./AddTopic";
 import { AddNote } from "./AddNote";
-import { Topic } from "@prisma/client";
 import { Topics } from "./Topics";
+
+type Topic = RouterOutputs["topic"]["getAll"][0];
+
 const NotesComponent = () => {
   const { data: sessionData, status } = useSession();
   const { data: topics, refetch: refetchTopics } = api.topic.getAll.useQuery(

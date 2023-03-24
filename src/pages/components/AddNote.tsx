@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Topic } from "@prisma/client";
 import type { DefaultAddNoteForm } from "@/types";
-import { api } from "@/utils/api";
+import { api, type RouterOutputs } from "@/utils/api";
 import {
   Button,
   FormControl,
@@ -10,6 +9,8 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
+
+type Topic = RouterOutputs["topic"]["getAll"][0];
 
 interface AddNoteProps {
   topics: Topic[];

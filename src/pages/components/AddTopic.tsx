@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-} from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { api } from "@/utils/api";
 
 interface AddTopicProps {
