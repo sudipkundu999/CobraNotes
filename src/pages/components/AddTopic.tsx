@@ -6,7 +6,7 @@ interface AddTopicProps {
   refetchTopics: () => void;
 }
 
-export const AddTopic: React.FC<AddTopicProps> = ({ refetchTopics }) => {
+const AddTopic: React.FC<AddTopicProps> = ({ refetchTopics }) => {
   const [topic, setTopic] = useState("");
   const [error, setError] = useState("");
   const createTopic = api.topic.create.useMutation({
@@ -54,3 +54,5 @@ export const AddTopic: React.FC<AddTopicProps> = ({ refetchTopics }) => {
     </div>
   );
 };
+
+export default AddTopic;

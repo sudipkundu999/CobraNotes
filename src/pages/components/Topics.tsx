@@ -20,7 +20,7 @@ interface TopicsProps {
   setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const Topics: React.FC<TopicsProps> = ({
+const Topics: React.FC<TopicsProps> = ({
   topics,
   refetchTopics,
   noteTopicId,
@@ -66,3 +66,5 @@ export const Topics: React.FC<TopicsProps> = ({
     </Accordion>
   );
 };
+
+export default Topics;

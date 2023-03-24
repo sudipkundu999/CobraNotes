@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { api, type RouterOutputs } from "@/utils/api";
 import { useSession } from "next-auth/react";
-import { AddTopic } from "./AddTopic";
-import { AddNote } from "./AddNote";
-import { Topics } from "./Topics";
+import AddTopic from "./AddTopic";
+import AddNote from "./AddNote";
+import Topics from "./Topics";
 
 type Topic = RouterOutputs["topic"]["getAll"][0];
 

@@ -17,7 +17,7 @@ interface AddNoteProps {
   setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const AddNote: React.FC<AddNoteProps> = ({ topics, setNoteTopicId }) => {
+const AddNote: React.FC<AddNoteProps> = ({ topics, setNoteTopicId }) => {
   const defaultFormState = { title: "", content: "", topicId: "" };
   const [form, setForm] = useState<DefaultAddNoteForm>(defaultFormState);
   const [error, setError] = useState("");
@@ -111,3 +111,5 @@ export const AddNote: React.FC<AddNoteProps> = ({ topics, setNoteTopicId }) => {
     </div>
   );
 };
+
+export default AddNote;
