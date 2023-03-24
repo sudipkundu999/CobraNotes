@@ -31,12 +31,21 @@ const Topics: React.FC<TopicsProps> = ({
       void refetchTopics();
     },
   });
+  const deleteAllNotesAndTopic = api.note.deleteAll.useMutation({
+    onSuccess(data, variables, context) {
+      deleteTopic.mutate({ topicId: variables.topicId });
+    },
+  });
+
+  const deleteButtonClickHandler = (topicId: string) => {
+    deleteAllNotesAndTopic.mutate({ topicId: topicId });
+  };
 
   const DeleteTopicButton: React.FC<{ topicId: string }> = ({ topicId }) => (
     <Button
       colorScheme="red"
       variant="link"
-      onClick={() => deleteTopic.mutate({ topicId: topicId })}
+      onClick={() => deleteButtonClickHandler(topicId)}
     >
       Delete Topic
     </Button>
