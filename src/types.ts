@@ -12,3 +12,9 @@ export interface LoginButtonProps {
 export interface LogoutButtonProps {
   isLoading: boolean;
 }
+
+export interface DefaultAddNoteForm {
+  title: string;
+  content: string;
+  topicId: string;
+}
