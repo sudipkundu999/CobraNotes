@@ -16,12 +16,14 @@ interface TopicsProps {
   topics: Topic[];
   refetchTopics: Function;
   noteTopicId: string;
+  setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Topics: React.FC<TopicsProps> = ({
   topics,
   refetchTopics,
   noteTopicId,
+  setNoteTopicId,
 }) => {
   const deleteTopic = api.topic.delete.useMutation({
     onSuccess: () => {
@@ -49,7 +51,11 @@ export const Topics: React.FC<TopicsProps> = ({
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            <Notes topicId={topic.id} noteTopicId={noteTopicId} />
+            <Notes
+              topicId={topic.id}
+              noteTopicId={noteTopicId}
+              setNoteTopicId={setNoteTopicId}
+            />
             <div className="mt-2 w-full text-right">
               <DeleteTopicButton topicId={topic.id} />
             </div>

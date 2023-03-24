@@ -14,9 +14,14 @@ import {
 interface NotesProps {
   topicId: string;
   noteTopicId: string;
+  setNoteTopicId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Notes: React.FC<NotesProps> = ({ topicId, noteTopicId }) => {
+const Notes: React.FC<NotesProps> = ({
+  topicId,
+  noteTopicId,
+  setNoteTopicId,
+}) => {
   const { data: sessionData, status } = useSession();
   const { data: notes, refetch: refetchNotes } = api.note.getAll.useQuery(
     { topicId: topicId },
@@ -42,6 +47,7 @@ const Notes: React.FC<NotesProps> = ({ topicId, noteTopicId }) => {
   useEffect(() => {
     if (noteTopicId === topicId) {
       refetchNotes();
+      setNoteTopicId("");
     }
   }, [noteTopicId]);
 
