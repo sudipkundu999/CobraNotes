@@ -18,6 +18,18 @@ export const topicRouter = createTRPCRouter({
         },
       });
     }),
+  edit: protectedProcedure
+    .input(z.object({ topicId: z.string(), title: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.topic.update({
+        where: {
+          id: input.topicId,
+        },
+        data: {
+          title: input.title,
+        },
+      });
+    }),
   delete: protectedProcedure
     .input(z.object({ topicId: z.string() }))
     .mutation(({ ctx, input }) => {

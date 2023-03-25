@@ -10,6 +10,7 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+import EditNote from "./EditNote";
 
 interface NotesProps {
   topicId: string;
@@ -61,6 +62,7 @@ const Notes: React.FC<NotesProps> = ({
               <Box as="span" flex="1" textAlign="left">
                 {note.title}
               </Box>
+              <EditNote note={note} refetchNotes={refetchNotes} />
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4}>
