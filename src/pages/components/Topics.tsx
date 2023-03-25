@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Notes from "./Notes";
 import { api, type RouterOutputs } from "@/utils/api";
+import EditTopic from "./EditTopic";
 
 type Topic = RouterOutputs["topic"]["getAll"][0];
 
@@ -50,6 +51,7 @@ const Topics: React.FC<TopicsProps> = ({
       Delete Topic
     </Button>
   );
+
   return (
     <Accordion allowMultiple>
       {topics?.map((topic, i) => (
@@ -58,6 +60,7 @@ const Topics: React.FC<TopicsProps> = ({
             <Box as="span" flex="1" textAlign="left">
               {topic.title}
             </Box>
+            <EditTopic topic={topic} refetchTopics={refetchTopics} />
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
