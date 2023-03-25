@@ -25,9 +25,11 @@ interface EditNoteProps {
 }
 
 const EditNote: React.FC<EditNoteProps> = ({ note, refetchNotes }) => {
-  const { id, title, content } = note;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const defaultFormState = { title: title, content: content };
+  const defaultFormState = {
+    title: note?.title || "",
+    content: note?.content || "",
+  };
   const [form, setForm] = useState<{ title: string; content: string }>(
     defaultFormState
   );
@@ -65,7 +67,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, refetchNotes }) => {
     editNote.mutate({
       title: form.title,
       content: form.content,
-      noteId: id,
+      noteId: note?.id,
     });
   };
 

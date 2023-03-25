@@ -27,9 +27,8 @@ const EditTopic: React.FC<EditTopicProps> = ({
   topic: topicObj,
   refetchTopics,
 }) => {
-  const { id, title } = topicObj;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [topic, setTopic] = useState(title);
+  const [topic, setTopic] = useState(topicObj?.title || "");
 
   const initialRef = React.useRef(null);
   const editTopic = api.topic.edit.useMutation({
@@ -54,7 +53,7 @@ const EditTopic: React.FC<EditTopicProps> = ({
   const onSave = () => {
     editTopic.mutate({
       title: topic,
-      topicId: id,
+      topicId: topicObj?.id,
     });
   };
 
