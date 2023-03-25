@@ -15,11 +15,15 @@ const NotesComponent = () => {
   );
   const [noteTopicId, setNoteTopicId] = useState("");
 
+  const isTopicsEmpty: boolean = topics?.length === 0;
+
   return (
     <div className="mt-10 w-full px-1">
-      {topics?.length && (
-        <div className="mb-2 w-full text-center text-xl">List of Notes</div>
-      )}
+      <div className="mb-2 w-full text-center text-xl">
+        {!isTopicsEmpty
+          ? "List of Topics"
+          : "Please add a new Topic to add new Note"}
+      </div>
       <Topics
         topics={topics as Topic[]}
         refetchTopics={refetchTopics}
@@ -27,7 +31,9 @@ const NotesComponent = () => {
         setNoteTopicId={setNoteTopicId}
       />
       <AddTopic refetchTopics={refetchTopics} />
-      <AddNote topics={topics as Topic[]} setNoteTopicId={setNoteTopicId} />
+      {!isTopicsEmpty && (
+        <AddNote topics={topics as Topic[]} setNoteTopicId={setNoteTopicId} />
+      )}
     </div>
   );
 };
