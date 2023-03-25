@@ -42,9 +42,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, refetchNotes }) => {
     },
   });
 
-  const editNoteClickHandler = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const editNoteClickHandler = (e: React.MouseEvent) => {
     e.stopPropagation();
     onOpen();
   };
@@ -77,14 +75,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, refetchNotes }) => {
   return (
     <>
       <div className="ml-auto pr-2 text-red-500">
-        <Button
-          colorScheme="red"
-          variant="link"
-          onClick={(e) => editNoteClickHandler(e)}
-          size="xs"
-        >
-          <Icons icon="edit" />
-        </Button>
+        <Icons icon="edit" onClick={(e) => editNoteClickHandler(e)} />
       </div>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

@@ -2,9 +2,10 @@ import React from "react";
 
 interface IconsProps {
   icon: "delete" | "edit";
+  onClick: (e: React.MouseEvent) => void;
 }
 
-const Icons: React.FC<IconsProps> = ({ icon }) => {
+const Icons: React.FC<IconsProps> = ({ icon, onClick }) => {
   switch (icon) {
     case "delete":
       return (
@@ -13,6 +14,7 @@ const Icons: React.FC<IconsProps> = ({ icon }) => {
           width="24"
           height="24"
           viewBox="0 0 24 24"
+          onClick={onClick}
         >
           <path
             fill="#E53E3E"
@@ -27,6 +29,7 @@ const Icons: React.FC<IconsProps> = ({ icon }) => {
           width="24"
           height="24"
           viewBox="0 0 24 24"
+          onClick={onClick}
         >
           <path
             fill="#888888"
