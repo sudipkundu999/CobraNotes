@@ -24,9 +24,10 @@ interface EditTopicProps {
 }
 
 const EditTopic: React.FC<EditTopicProps> = ({
-  topic: { id, title },
+  topic: topicObj,
   refetchTopics,
 }) => {
+  const { id, title } = topicObj;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [topic, setTopic] = useState(title);
 

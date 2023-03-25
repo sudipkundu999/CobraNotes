@@ -24,10 +24,8 @@ interface EditNoteProps {
   refetchNotes: () => void;
 }
 
-const EditNote: React.FC<EditNoteProps> = ({
-  note: { id, title, content },
-  refetchNotes,
-}) => {
+const EditNote: React.FC<EditNoteProps> = ({ note, refetchNotes }) => {
+  const { id, title, content } = note;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const defaultFormState = { title: title, content: content };
   const [form, setForm] = useState<{ title: string; content: string }>(
