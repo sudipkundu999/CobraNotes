@@ -52,9 +52,13 @@ const Topics: React.FC<TopicsProps> = ({
     </Button>
   );
 
+  const sortedTopics: Topic[] = topics?.sort(
+    (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
+  );
+
   return (
     <Accordion allowMultiple>
-      {topics?.map((topic, i) => (
+      {sortedTopics?.map((topic, i) => (
         <AccordionItem key={`${topic.title}-${i}`}>
           <AccordionButton>
             <Box as="span" flex="1" textAlign="left">

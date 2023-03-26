@@ -38,9 +38,7 @@ const EditTopic: React.FC<EditTopicProps> = ({
     },
   });
 
-  const editTopicClickHandler = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const editTopicClickHandler = (e: React.MouseEvent) => {
     e.stopPropagation();
     onOpen();
   };
@@ -60,14 +58,7 @@ const EditTopic: React.FC<EditTopicProps> = ({
   return (
     <>
       <div className="ml-auto pr-2 text-red-500">
-        <Button
-          colorScheme="red"
-          variant="link"
-          onClick={(e) => editTopicClickHandler(e)}
-          size="xs"
-        >
-          <Icons icon="edit" />
-        </Button>
+        <Icons icon="edit" onClick={(e) => editTopicClickHandler(e)} />
       </div>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
