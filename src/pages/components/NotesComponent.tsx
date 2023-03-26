@@ -20,9 +20,7 @@ const NotesComponent = () => {
   return (
     <div className="mt-10 w-full px-1">
       <div className="mb-2 w-full text-center text-xl">
-        {!isTopicsEmpty
-          ? "List of Topics"
-          : "Please add a new Topic to add new Note"}
+        {!isTopicsEmpty ? "List of Topics" : "Add a new Topic to add new Note"}
       </div>
       <Topics
         topics={topics as Topic[]}
