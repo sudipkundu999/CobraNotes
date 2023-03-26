@@ -1,4 +1,4 @@
-# Note Taking App
+# [Note Taking App](https://cobra-notes.vercel.app/)
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
