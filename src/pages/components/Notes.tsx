@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
+import { api, type RouterOutputs } from "@/utils/api";
 import {
   Accordion,
   AccordionButton,
@@ -11,6 +11,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import EditNote from "./EditNote";
+
+type Note = RouterOutputs["note"]["getAll"][0];
 
 interface NotesProps {
   topicId: string;
@@ -53,10 +55,14 @@ const Notes: React.FC<NotesProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [noteTopicId]);
 
+  const sortedNotes: Note[] = notes
+    ? notes?.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+    : [];
+
   return (
     <div className="mt-1 w-full px-1">
       <Accordion allowMultiple>
-        {notes?.map((note, i) => (
+        {sortedNotes?.map((note, i) => (
           <AccordionItem key={`${note.title}-${i}`}>
             <AccordionButton>
               <Box as="span" flex="1" textAlign="left">
