@@ -14,7 +14,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ isLoading }) => (
     variant="outline"
     isLoading={isLoading}
     onClick={() => void signOut()}
-    className="!absolute top-24 right-1"
+    className="!absolute -right-4 -bottom-10"
   >
     Sign out
   </Button>
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
   return (
     <header className="flex h-20 w-full items-center justify-between">
       <div className="text-2xl ">Note Taker</div>
-      <div className="flex">
+      <div className="relative flex">
         {sessionData ? (
           <UserDetails sessionData={sessionData} onClick={toggleShowLogout} />
         ) : (
