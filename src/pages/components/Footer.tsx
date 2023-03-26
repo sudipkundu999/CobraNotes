@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-const Footer: React.FC<{}> = () => {
+interface FooterProps {}
+
+const Footer: React.FC<FooterProps> = () => {
   return (
     <div className="mt-auto w-full pt-2 text-center">
       Made by
