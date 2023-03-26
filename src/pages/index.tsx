@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NotesComponent from "./components/NotesComponent";
 
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
             Please login to continue
           </div>
         )}
+        <Footer />
       </main>
     </>
   );
