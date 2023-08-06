@@ -1,0 +1,18 @@
+version: "1.0"
+services:
+  app:
+    platform: "linux/amd64"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_CLIENTVAR: "clientvar"
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    image: cobranotes-image
+    environment:
+      HOSTNAME : "localhost"
+    env_file:
+      - local.env
