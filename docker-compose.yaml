@@ -12,7 +12,3 @@ services:
       - "3000:3000"
     stdin_open: true
     image: cobranotes-image
-    environment:
-      HOSTNAME : "localhost"
-    env_file:
-      - local.env
