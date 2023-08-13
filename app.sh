@@ -1,0 +1,1 @@
+docker pull sudipkundu999/cobra-notes && docker run --platform=linux/amd64 -p 3000:3000 -e DATABASE_URL="" -e NEXTAUTH_SECRET="" -e NEXTAUTH_URL="" -e GOOGLE_CLIENT_ID="" -e GOOGLE_CLIENT_SECRET="" -e HOSTNAME="" sudipkundu999/cobra-notes:latest
